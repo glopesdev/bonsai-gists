@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.6.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:LoadImage">
+          <cv:FileName>Lenna.png</cv:FileName>
+          <cv:Mode>Unchanged</cv:Mode>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:Grayscale" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:Smooth">
+          <cv:SmoothType>Median</cv:SmoothType>
+          <cv:Size1>7</cv:Size1>
+          <cv:Size2>0</cv:Size2>
+          <cv:Sigma1>0</cv:Sigma1>
+          <cv:Sigma2>0</cv:Sigma2>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:SaveImage">
+          <cv:FileName>Lenna-gray.png</cv:FileName>
+          <cv:Suffix>None</cv:Suffix>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
